@@ -1,6 +1,6 @@
 cask "chronicle" do
-  version "0.1.2"
-  sha256 "5b6179620f327759ed088322f92d2e49fee0798d61d8659d8076a5775845898c"
+  version "0.1.3"
+  sha256 "13a2474d8b56d0e5e51f2c7f0e3bd24964a4bdb0e2b1ba82d5e64ad71de068ba"
 
   url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/Chronicle-#{version}.dmg"
   name "Chronicle"
