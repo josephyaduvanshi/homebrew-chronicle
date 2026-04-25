@@ -1,8 +1,8 @@
 cask "chronicle" do
-  version "0.1.4"
-  sha256 "8984a2fcecec94dc964feae62022aed98e8d49dbf1990197b0bb24fad6b06edf"
+  version "0.1.5"
+  sha256 "b477646f920511716e3187ae324290dc89cbefd0eb1c2c58c2ff4b3e00a3b185"
 
-  url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/Chronicle-#{version}.pkg",
+  url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/Chronicle-#{version}.zip",
       verified: "github.com/josephyaduvanshi/claude-history-manager/"
   name "Chronicle"
   desc "Browser for your Claude Code session history"
@@ -10,16 +10,20 @@ cask "chronicle" do
 
   depends_on macos: ">= :sequoia"
 
-  pkg "Chronicle-#{version}.pkg"
-
-  # Expose the embedded `chronicle` CLI on PATH. The .app's
-  # postinstall script strips quarantine on the bundle (and so on
-  # the helper inside it), so this symlink works without any
-  # additional Gatekeeper dance.
+  app "Chronicle.app"
   binary "#{appdir}/Chronicle.app/Contents/Helpers/chronicle"
 
-  uninstall pkgutil: "app.chronicle.Chronicle",
-            delete:  "/Applications/Chronicle.app"
+  postflight do
+    # Strip the Gatekeeper quarantine attribute. The .app ships
+    # ad-hoc signed (no Apple Developer ID); without this users
+    # see the "Apple could not verify" dialog on first launch.
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Chronicle.app"],
+                   sudo: false
+  end
+
+  uninstall quit:   "app.chronicle.Chronicle",
+            delete: "#{appdir}/Chronicle.app"
 
   zap trash: [
     "~/Library/Application Support/Chronicle",
