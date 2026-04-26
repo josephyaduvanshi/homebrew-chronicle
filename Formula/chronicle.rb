@@ -14,7 +14,7 @@ class Chronicle < Formula
       sha256 "4a68c74457aa4036a5b636439dc35051c9ca7fc8b74347ec6e800f510cbdb4f6"
     else
       url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/chronicle-#{version}-linux-x86_64.tar.gz"
-      sha256 "ddb00d61a4ae9b41a7aabd90512cd227f8224a3de725fde4f02826475db2c706"
+      sha256 "4d6622c1a5f9ba2337ee4c149aad845d5e593bbb3d7463abd8f0cbc59fc563a4"
     end
   end
 
