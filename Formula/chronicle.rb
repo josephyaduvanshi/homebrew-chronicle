@@ -4,17 +4,17 @@ class Chronicle < Formula
   desc "Browser for your Claude Code session history (CLI)"
   homepage "https://github.com/josephyaduvanshi/claude-history-manager"
   license "MIT"
-  version "0.2.2"
+  version "0.2.3"
 
   depends_on :linux
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/chronicle-#{version}-linux-aarch64.tar.gz"
-      sha256 "abf5e1de7aa90ca46b125eefeee11a28d6f7791f4f48cf0c695a87bcbc8beaa5"
+      sha256 "4a68c74457aa4036a5b636439dc35051c9ca7fc8b74347ec6e800f510cbdb4f6"
     else
       url "https://github.com/josephyaduvanshi/claude-history-manager/releases/download/v#{version}/chronicle-#{version}-linux-x86_64.tar.gz"
-      sha256 "62889a7799997812b4ebe18b3cfb3b2793d4cef0bfd202e7b77769e27cb2e745"
+      sha256 "ddb00d61a4ae9b41a7aabd90512cd227f8224a3de725fde4f02826475db2c706"
     end
   end
 
@@ -23,6 +23,6 @@ class Chronicle < Formula
   end
 
   test do
-    assert_match "chronicle 0.2.2", shell_output("#{bin}/chronicle --version")
+    assert_match "chronicle 0.2.3", shell_output("#{bin}/chronicle --version")
   end
 end
